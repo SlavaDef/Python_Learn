@@ -1,0 +1,10 @@
+paranoid_android = "Marvin the Paranoid Android"
+letters = list(paranoid_android)
+for char in letters[:6]: # first 6 letters (Marvin)
+    print('\t',char)
+print()
+for char in letters[-7:]: # index from -7 to -1 (Android)
+    print('\t'*2,char)
+print()
+for char in letters[12:19]: # index from 12 to 19 (the Paranoid)
+    print('\t'*3,char)
