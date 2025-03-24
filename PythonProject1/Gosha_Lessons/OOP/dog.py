@@ -24,5 +24,8 @@ labrador.isHappy = True
 
 labrador.eat() # father class
 
+
 labrador.display()
+print()
+labrador.song()
 

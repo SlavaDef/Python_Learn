@@ -9,5 +9,8 @@ class Animal:
         print("I can eat")
 
 
+    song = lambda self: print("I can sing")
+
+
 #e = Animal()
 #e.eat()
