@@ -1,0 +1,3 @@
+While AI large language models excel at answering questions, they struggle with logical reasoning and consistent
+rule application. I ran tests where ChatGPT4 and ChatGPT4o had to solve three versions of the famous river
+crossing puzzle. The results make me doubt that LLMs are even approaching artificial general intelligence.
