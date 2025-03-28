@@ -52,6 +52,10 @@ def counter(letters, phrase):
     return count_dictionary
 
 
+def find_letters_in_words(letters: str, phrase: str):
+    return sorted(set(letters).intersection(set(phrase)))  # SET єто множество
+
+
 
 def find_letters_in_words_version_four(phrase:str='', letters:str='aeoi' ) -> set:
     #count_dictionary = counter(letters, phrase)

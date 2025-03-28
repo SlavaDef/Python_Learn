@@ -40,6 +40,11 @@ def find_letters_in_words_version_third(letters:str, phrase:str):
        print(letter, ' - was been found in word' )
 
 
+
+
+
+
+
 def counter(letters, phrase):
     # method to find count of letters in word/text return dictionary
     count_dictionary = {}  # empty dictionary

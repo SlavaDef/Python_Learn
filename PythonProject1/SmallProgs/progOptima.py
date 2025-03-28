@@ -14,7 +14,8 @@ while True:
         # Введення відсотку
         b = float(input("Введіть процент: "))
 
-        print(f"Результат: {calculate_discount(a, b)}\n")
+        print(f"Сума зі знижкою: {calculate_discount(a, b)} usd")
+        print("Ваша знижка:", a - calculate_discount(a, b), 'usd')
 
     except ValueError:
         print("❌ Кривий ввід. Введіть коректне число!\n")
