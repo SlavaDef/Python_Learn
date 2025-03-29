@@ -1,4 +1,5 @@
 import json
+import time
 
 FILENAME = "bank_data.json"
 
@@ -6,7 +7,7 @@ FILENAME = "bank_data.json"
 try:
     with open(FILENAME, "r") as f:
         bank = json.load(f)
-except (FileNotFoundError, json.JSONDecodeError):
+except (FileNotFoundError, json.JSONDecodeError): # якщо файлу немає чи помилка читання загрузиться дефолтний словник
     bank = {'USD': 10927, 'EUR': 3800, 'GBP': 30, 'GRN': 30}
 
 print("Початковий баланс:", bank)
@@ -26,9 +27,10 @@ while True:
             continue
 
         b = float(input("Введіть новий баланс: "))
-        bank[currencies[selection - 1]] = b  # Оновлення балансу
+        bank[currencies[selection - 1]] += b  # Оновлення балансу
 
     except ValueError:
         print("❌ Некоректний ввід! Спробуйте ще раз.")
 
-print("Оновлений баланс:", bank)
+print("Оновлений баланс:", bank , "станом на", time.ctime(time.time()) )
+#print('Дата останнього оновлення',time.ctime(time.time()))
