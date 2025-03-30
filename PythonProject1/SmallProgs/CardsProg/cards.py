@@ -1,6 +1,8 @@
 import random
 from random import choice
 
+from Metanit_Book.Func.function_3 import result
+
 cards = ['2_hearts', '3_hearts', '4_hearts','5_hearts','6_hearts', '7_hearts', '8_hearts', '9_hearts',
          '10_hearts', 'J_hearts', 'Q_hearts', 'K_hearts', 'A_hearts', '2_diamonds', '3_diamonds',
          '4_diamonds','5_diamonds','6_diamonds', '7_diamonds', '8_diamonds', '9_diamonds', '10_diamonds',
@@ -24,7 +26,7 @@ def remember():
     cards.remove(second_card)
     card_list = [first_card, second_card]
 
-    print('Your cards is:', first_card, second_card, sep=' ')
+    print('Your cards is:', first_card, second_card, 'count = ', count_cards(card_list), sep=' ')
 
 
     while True:
@@ -34,14 +36,13 @@ def remember():
                break
            if choiсe == 2:
                new_card = random.choice(cards)
-               #print('New card:', new_card)
                card_list.append(new_card)
                cards.remove(new_card)
-               print('Your cards is:', end=' ')
-               for i in card_list:
-
-                   print( i, '* ', sep=' ', end='')
+               print('Your cards is:', card_list, 'count = ', count_cards(card_list), end=' ')
                print()
+               if count_cards(card_list) > 21:
+                   print('You lose!')
+                   break
 
         except ValueError:
             print("❌ Некоректний ввід! Спробуйте ще раз.")
@@ -49,14 +50,50 @@ def remember():
 
 
 #print(cards)
-
+cards_list22 = ['J_diamonds', 'Q_diamonds', 'K_diamonds', 'A_diamonds']
 #print(cards)
+def count_cards(cards_list):
 
-shuffle(cards)
-print(cards)
+    result68 = 0
+    for i in cards_list:
+
+        res = i.split('_')
+
+        try:
+            new_res = int(res[0])
+            result68+=new_res
+        except ValueError:
+
+            if res[0] == 'J':
+               new_res = 2
+               result68 += new_res
+
+            if res[0] == 'Q':
+               new_res = 3
+               result68 += new_res
+
+            if res[0] == 'K':
+                new_res = 4
+                result68 += new_res
+
+            if res[0] == 'A':
+                new_res = 11
+                result68 += new_res
+
+    return result68
+
+
+
+#shuffle(cards)
+#print(cards)
 remember()
-print(cards)
+#print(cards)
+#print(count_cards(cards_list22),'*')
 
 
 
 
+
+# for i in card_list:
+
+# print( i, '* ', 'count = ', count_cards(card_list), sep=' ', end='')
