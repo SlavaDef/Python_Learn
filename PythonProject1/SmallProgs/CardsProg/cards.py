@@ -1,7 +1,4 @@
 import random
-from random import choice
-
-from Metanit_Book.Func.function_3 import result
 
 cards = ['2_hearts', '3_hearts', '4_hearts','5_hearts','6_hearts', '7_hearts', '8_hearts', '9_hearts',
          '10_hearts', 'J_hearts', 'Q_hearts', 'K_hearts', 'A_hearts', '2_diamonds', '3_diamonds',
@@ -20,6 +17,8 @@ def shuffle(car):
 
 
 def remember():
+    shuffle(cards)
+
     first_card = random.choice(cards)
     second_card = random.choice(cards)
     cards.remove(first_card)
@@ -29,6 +28,25 @@ def remember():
     print('Your cards is:', first_card, second_card, 'count = ', count_cards(card_list), sep=' ')
 
 
+
+    tempo = play(card_list)
+    a = 0
+    if tempo <= 20:
+        a = comp_play(cards)
+    if tempo > a and a!=0:
+        print('You win!')
+
+    elif tempo < a < 22:
+        print('Computer win!')
+    elif tempo < a >= 22:
+        print('You win!')
+    elif tempo == a:
+        print('Draw!')
+
+
+
+def play(card_list):
+    temp = True
     while True:
         try:
            choiсe = int(input('1. Stop\n2. Continue\n> '))
@@ -42,16 +60,53 @@ def remember():
                print()
                if count_cards(card_list) > 21:
                    print('You lose!')
+                   temp = False
+                   break
+               if count_cards(card_list) == 21:
+                   print('Congratulations, You win!')
+                   temp = False
                    break
 
         except ValueError:
             print("❌ Некоректний ввід! Спробуйте ще раз.")
+    #return temp
+    return  count_cards(card_list)
 
 
 
-#print(cards)
-cards_list22 = ['J_diamonds', 'Q_diamonds', 'K_diamonds', 'A_diamonds']
-#print(cards)
+def comp_play(cards2):
+
+    new_card = random.choice(cards2)
+    new_card2 = random.choice(cards2)
+    card_list22 = [new_card, new_card2]
+    cards2.remove(new_card)
+    cards2.remove(new_card2)
+
+    while True:
+        print('Computer cards is:', card_list22, 'count =', count_cards(card_list22))
+
+        if count_cards(card_list22) <= 19:
+            print('Computer to continue')
+            new_card3 = random.choice(cards2)
+            card_list22.append(new_card3)
+            cards2.remove(new_card3)
+
+        if count_cards(card_list22) == 20:
+            print('Computer cards is:', card_list22, 'count =', count_cards(card_list22))
+            break
+
+        if count_cards(card_list22) == 21:
+            print('Computer cards is:', card_list22, 'count =', count_cards(card_list22))
+            print('Comp win!')
+            break
+
+        if count_cards(card_list22) > 21:
+            print('Computer cards is:', card_list22, 'count =', count_cards(card_list22))
+            print('Comp to get over, player win!')
+            break
+    return count_cards(card_list22)
+
+
 def count_cards(cards_list):
 
     result68 = 0
@@ -84,16 +139,11 @@ def count_cards(cards_list):
 
 
 
-#shuffle(cards)
-#print(cards)
 remember()
-#print(cards)
-#print(count_cards(cards_list22),'*')
 
 
 
 
 
-# for i in card_list:
 
-# print( i, '* ', 'count = ', count_cards(card_list), sep=' ', end='')
+
